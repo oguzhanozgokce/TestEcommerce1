@@ -11,5 +11,6 @@
     <color name="orange">#FA8100</color>
     <color name="blue">#26C6DA</color>
     <color name="blueTwo">#29B6F6</color>
-    <color name="grey">#dddddd</color>
+    <color name="grey">#d3d3d3</color>
+    <color name="greyTwo">#bebebe</color>
 </resources>

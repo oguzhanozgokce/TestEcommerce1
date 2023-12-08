@@ -24,4 +24,16 @@
     <string name="rating">Rating</string>
     <string name="salesperson">SalesPerson</string>
     <string name="favoritesTitle">My Favorites</string>
+    <string name="my_cart">My Cart</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="subtotal">SubTotal</string>
+    <string name="delivery">Delivery</string>
+    <string name="_0_00">$0.00</string>
+    <string name="total">Total</string>
+    <string name="your_delivery_address">Your Delivery Address</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="order_now">Order Now</string>
+    <string name="cash">Cash</string>
+    <string name="Istabul_bakirkoy_419_sok_6_2">İstabul Bakirkoy 419.sok 6/2</string>
+    <string name="total_tax">Total Tax</string>
 </resources>
