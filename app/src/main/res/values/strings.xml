@@ -23,4 +23,5 @@
     <string name="product_price">Product Price</string>
     <string name="rating">Rating</string>
     <string name="salesperson">SalesPerson</string>
+    <string name="favoritesTitle">My Favorites</string>
 </resources>
