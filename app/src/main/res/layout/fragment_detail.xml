@@ -16,8 +16,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/linearLayoutIDStart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -48,7 +54,7 @@
                     tools:srcCompat="@drawable/baseline_favorite_border_24" />
 
                 <View
-                    android:id="@+id/viewID"
+                    android:id="@+id/detailViewID"
                     android:layout_width="0dp"
                     android:layout_height="290dp"
                     android:layout_margin="16dp"
@@ -64,10 +70,10 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:src="@tools:sample/avatars"
-                    app:layout_constraintBottom_toBottomOf="@+id/viewID"
-                    app:layout_constraintEnd_toEndOf="@+id/viewID"
-                    app:layout_constraintStart_toStartOf="@+id/viewID"
-                    app:layout_constraintTop_toTopOf="@+id/viewID"
+                    app:layout_constraintBottom_toBottomOf="@+id/detailViewID"
+                    app:layout_constraintEnd_toEndOf="@+id/detailViewID"
+                    app:layout_constraintStart_toStartOf="@+id/detailViewID"
+                    app:layout_constraintTop_toTopOf="@+id/detailViewID"
                     tools:srcCompat="@drawable/pic1" />
 
                 <LinearLayout
@@ -80,7 +86,7 @@
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/viewID"
+                    app:layout_constraintTop_toBottomOf="@+id/detailViewID"
                     tools:layout_editor_absoluteX="144dp">
                         <TextView
                             android:id="@+id/detailTitleID"
@@ -117,13 +123,70 @@
                         android:id="@+id/starBorderID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:src="@drawable/baseline_star_border_24"/>
+                    <TextView
+                        android:id="@+id/detailRatingID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="@string/rating"/>
+                    <ImageView
+                        android:id="@+id/commentID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
+                        android:src="@drawable/baseline_comment_24"/>
+                    <TextView
+                        android:id="@+id/detailSalesPersonID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:text="@string/salesperson"/>
 
                 </LinearLayout>
-
+                <View
+                    android:id="@+id/viewID2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/grey"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutID2"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/detailDescriptionID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Operating System: macOS.
+                Display: Liquid Retina XDR display.
+                Processor Type: Apple M2 Pro.
+                Screen Size: 14.2 inches
+                Memory: 16 GB.
+                Storage: 1 TB.
+                Keyboard: Magic Keyboard with Touch ID and backlit - Turkish Q.
+                Display: 14.2 inch (diagonal) mini-LED backlit display."
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="italic"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/detailButtonID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add to Basket"
+                android:layout_margin="25dp"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                style="@android:style/Widget.Button"
+                android:background="@drawable/detail_button_background"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
