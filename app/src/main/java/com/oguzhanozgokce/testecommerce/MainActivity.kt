@@ -9,6 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.oguzhanozgokce.testecommerce.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    //Setup view binding
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
