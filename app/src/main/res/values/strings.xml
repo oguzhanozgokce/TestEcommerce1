@@ -19,4 +19,6 @@
     <string name="favorites">Favorites</string>
     <string name="cart">Cart</string>
     <string name="profile">Profile</string>
+    <string name="product_title">Product Title</string>
+    <string name="product_price">Product Price</string>
 </resources>
