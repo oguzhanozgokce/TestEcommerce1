@@ -41,4 +41,12 @@
     <string name="personal_information">Personal Information</string>
     <string name="my_orders">My Orders</string>
     <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="not_yet_registered_signup_now">Not yet registered? SignUp Now</string>
+    <string name="enter_your_login_credentials">Enter your login credentials</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="name">Name</string>
+    <string name="surname">Surname</string>
 </resources>
