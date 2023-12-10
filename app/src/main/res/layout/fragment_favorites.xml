@@ -6,4 +6,5 @@
     android:layout_height="wrap_content"
     tools:context=".favoritesfragment.FavoritesFragment">
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
