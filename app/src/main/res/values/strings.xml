@@ -36,4 +36,9 @@
     <string name="cash">Cash</string>
     <string name="Istabul_bakirkoy_419_sok_6_2">İstabul Bakirkoy 419.sok 6/2</string>
     <string name="total_tax">Total Tax</string>
+    <string name="customer_name">Customer Name</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="personal_information">Personal Information</string>
+    <string name="my_orders">My Orders</string>
+    <string name="logout">Logout</string>
 </resources>
