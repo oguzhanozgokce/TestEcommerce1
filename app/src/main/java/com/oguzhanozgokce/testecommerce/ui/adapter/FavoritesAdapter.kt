@@ -4,6 +4,6 @@ package com.oguzhanozgokce.testecommerce.ui.adapter
 // _______________________________
 // |					         |
 // |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
+// |	--------------------	 |
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|

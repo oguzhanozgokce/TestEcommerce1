@@ -5,15 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.oguzhanozgokce.testecommerce.R
+import com.oguzhanozgokce.testecommerce.databinding.FragmentLoginBinding
 
 
 class LoginFragment : Fragment() {
+    private lateinit var binding : FragmentLoginBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        binding = FragmentLoginBinding.inflate(inflater,container,false)
+        //When the button is pressed, it switches to the home fragment.
+        binding.loginButtonID.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_homeFragment)
+        }
+        binding.loginSignupTextID.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_signupFragment)
+        }
+        return binding.root
     }
 }
