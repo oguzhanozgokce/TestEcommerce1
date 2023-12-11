@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.testecommerce.cartfragment
+package com.oguzhanozgokce.testecommerce.ui.fragment.cartfragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

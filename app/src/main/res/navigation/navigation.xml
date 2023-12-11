@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.oguzhanozgokce.testecommerce.homefragment.HomeFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.homefragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.oguzhanozgokce.testecommerce.favoritesfragment.FavoritesFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.favoritesfragment.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.oguzhanozgokce.testecommerce.cartfragment.CartFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.cartfragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.oguzhanozgokce.testecommerce.profilefragment.ProfileFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.profilefragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
