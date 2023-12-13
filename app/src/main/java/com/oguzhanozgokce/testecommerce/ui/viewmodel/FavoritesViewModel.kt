@@ -1,4 +1,6 @@
-package com.oguzhanozgokce.testecommerce.ui.fragment
+package com.oguzhanozgokce.testecommerce.ui.viewmodel
+
+import androidx.lifecycle.ViewModel
 
 // Code with ♥️
 // _______________________________
@@ -7,3 +9,5 @@ package com.oguzhanozgokce.testecommerce.ui.fragment
 // |	--------------------				         |
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|
+class FavoritesViewModel : ViewModel() {
+}

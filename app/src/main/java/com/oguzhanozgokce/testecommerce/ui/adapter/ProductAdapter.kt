@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oguzhanozgokce.testecommerce.databinding.CardDesingBinding
-import com.oguzhanozgokce.testecommerce.domain.Produckt
+import com.oguzhanozgokce.testecommerce.domain.Product
+import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
 
 // Code with ♥️
 // _______________________________
@@ -17,10 +18,12 @@ import com.oguzhanozgokce.testecommerce.domain.Produckt
 
 class ProductAdapter(
     var mContex: Context,
-    var productList: List<Produckt>,
+    var productList: List<Product>,
+    var viewModel: HomeViewModel
+
 ) :
     RecyclerView.Adapter<ProductAdapter.DesingViewHolder>() {
-    inner class DesingViewHolder(var binding: CardDesingBinding) :
+    inner class DesingViewHolder(var binding: CardDesingBinding) :  // inner class ile inner class ın dış sınıfın özelliklerine erişmesini sağlar.
         RecyclerView.ViewHolder(binding.root) {
     }
 
@@ -42,5 +45,6 @@ class ProductAdapter(
                 mContex.packageName
             )
         )
+
     }
 }

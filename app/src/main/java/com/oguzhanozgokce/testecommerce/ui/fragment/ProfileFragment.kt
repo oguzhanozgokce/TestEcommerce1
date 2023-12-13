@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.testecommerce.ui.fragment.detail
+package com.oguzhanozgokce.testecommerce.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,17 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.oguzhanozgokce.testecommerce.R
-import com.oguzhanozgokce.testecommerce.databinding.FragmentDetailBinding
-import com.oguzhanozgokce.testecommerce.databinding.FragmentFavoritesBinding
+import com.oguzhanozgokce.testecommerce.databinding.FragmentProfileBinding
 
-class DetailFragment : Fragment() {
-    private lateinit var binding: FragmentDetailBinding
+
+class ProfileFragment : Fragment() {
+    private lateinit var binding : FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding  = FragmentDetailBinding.inflate(inflater,container,false)
+        binding  = FragmentProfileBinding.inflate(inflater,container,false)
         return binding.root
     }
+
+
 }

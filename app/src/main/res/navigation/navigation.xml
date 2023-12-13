@@ -7,29 +7,41 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.homefragment.HomeFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailFragment"
+            app:destination="@id/detailFragment"/>
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.favoritesfragment.FavoritesFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/cartFragment"
-        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.cartfragment.CartFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.profilefragment.ProfileFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.detail.DetailFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.fragment.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/homeFragment"/>
+        <argument
+            android:name="product_id"
+            app:argType="integer"
+            android:defaultValue="1" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.oguzhanozgokce.testecommerce.login.LoginFragment"
