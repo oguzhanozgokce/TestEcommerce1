@@ -17,8 +17,8 @@ import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
 // |_____________________________|
 
 class ProductAdapter(
-    var mContex: Context,
-    var productList: List<Product>,
+    val mContex: Context,
+    val productList: List<Product>,
     var viewModel: HomeViewModel
 
 ) :

@@ -11,6 +11,4 @@ import dagger.hilt.android.HiltAndroidApp
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|
 @HiltAndroidApp
-class HiltApplication : Application() {
-
-}
+class HiltApplication : Application()
