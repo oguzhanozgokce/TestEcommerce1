@@ -1,4 +1,7 @@
-package com.oguzhanozgokce.testecommerce.ui.adapter
+package com.oguzhanozgokce.testecommerce.hilt
+
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 
 // Code with ♥️
 // _______________________________
@@ -7,3 +10,7 @@ package com.oguzhanozgokce.testecommerce.ui.adapter
 // |	--------------------	 |
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|
+@HiltAndroidApp
+class HiltApplication : Application() {
+
+}

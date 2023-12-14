@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.FragmentCartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class CartFragment : Fragment() {
     private lateinit var binding : FragmentCartBinding
     //lateinit var viewModel : CartFragment

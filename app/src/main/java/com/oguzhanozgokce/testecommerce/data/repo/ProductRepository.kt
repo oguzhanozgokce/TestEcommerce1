@@ -18,10 +18,13 @@ import com.oguzhanozgokce.testecommerce.domain.Product
  * bu sayede viewmodel daha az kod içerecek ve daha anlaşılır olacak.
  * bu sayede veri tabanı işlemlerini daha kolay yapabileceğiz.
  */
-class ProductRepository {
-    val productDataSource = ProductDataSource()
+class ProductRepository (var productDataSource : ProductDataSource){
+
     suspend fun getAllProducts() = productDataSource.getAllProducts()
     suspend fun productRemove() = productDataSource.productRemove()
 
     suspend fun productAdd() : MutableList<Product> = productDataSource.productAdd()
+
+    suspend fun productSearch(productSearch: String) : MutableList<Product> =
+        productDataSource.productSearch(productSearch)
 }

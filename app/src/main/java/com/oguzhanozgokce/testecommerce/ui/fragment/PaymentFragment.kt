@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.FragmentPaymentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class PaymentFragment : Fragment() {
     lateinit var binding : FragmentPaymentBinding
     override fun onCreateView(

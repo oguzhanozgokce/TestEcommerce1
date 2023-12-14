@@ -6,6 +6,8 @@ plugins {
     id("org.jetbrains.kotlin.plugin.parcelize")
     //Room
     id("kotlin-kapt")
+    //hilt dagger
+    id("dagger.hilt.android.plugin")
 
 
 }
@@ -57,7 +59,7 @@ dependencies {
 
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.5")
-
+    implementation("androidx.databinding:databinding-runtime:8.2.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -74,5 +76,12 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     //kapt ("androidx.room:room-compiler:2.6.1")
 
+    //hilt dagger
+    implementation("com.google.dagger:hilt-android:2.48.1")
+    kapt("com.google.dagger:hilt-compiler:2.48.1")
 
+
+}
+hilt {
+    enableAggregatingTask = true
 }

@@ -4,9 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.domain.Product
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 // Code with ♥️
 // _______________________________
@@ -20,8 +22,9 @@ import kotlinx.coroutines.launch
  * val productRepository = ProductRepository() // veri tabanı işlemlerinin yapıldığı class
  * fun getAllProducts() // veri tabanından tüm ürünleri çekmek için kullanılır.
  */
-class HomeViewModel : ViewModel() {
-    val productRepository = ProductRepository()
+@HiltViewModel
+class HomeViewModel  @Inject constructor(var productRepository: ProductRepository) : ViewModel() {
+   
     var productList = MutableLiveData<List<Product>>()
 
     init {
@@ -36,6 +39,12 @@ class HomeViewModel : ViewModel() {
     fun productAdd() {
         CoroutineScope(Dispatchers.Main).launch {
             productList.value = productRepository.productAdd()
+        }
+    }
+
+    fun productSearch(productSearch: String) {
+        CoroutineScope(Dispatchers.Main).launch {
+            productList.value = productRepository.productSearch(productSearch)
         }
     }
 

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.FragmentLoginBinding
-
+import com.oguzhanozgokce.testecommerce.login.util.loginPage
 
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding
@@ -20,10 +20,10 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         //When the button is pressed, it switches to the home fragment.
         binding.loginButtonID.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_homeFragment)
+            Navigation.loginPage(it,R.id.action_loginFragment_to_homeFragment)
         }
         binding.loginSignupTextID.setOnClickListener {
-            Navigation.findNavController(it).navigate(R.id.action_loginFragment_to_signupFragment)
+            Navigation.loginPage(it, R.id.action_loginFragment_to_signupFragment)
         }
         return binding.root
     }

@@ -9,7 +9,10 @@ import androidx.fragment.app.viewModels
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.FragmentFavoritesBinding
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.FavoritesViewModel
+import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
     /**
      * val temp : FavoritesViewModel by this.viewModels()
@@ -31,7 +34,8 @@ class FavoritesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = FavoritesViewModel()
+        val tempViewModel : FavoritesViewModel by this.viewModels()
+        viewModel = tempViewModel
 
     }
 

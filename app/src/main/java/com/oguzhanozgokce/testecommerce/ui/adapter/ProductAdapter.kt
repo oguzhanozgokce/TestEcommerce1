@@ -45,6 +45,8 @@ class ProductAdapter(
                 mContex.packageName
             )
         )
+        holder.binding.favoritesProductTitleID.text = product.title
+        holder.binding.favoritesProductPriceID.text = product.price.toString()
 
     }
 }
