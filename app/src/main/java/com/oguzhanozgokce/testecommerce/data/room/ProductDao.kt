@@ -1,8 +1,8 @@
-package com.oguzhanozgokce.testecommerce.data
+package com.oguzhanozgokce.testecommerce.data.room
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.oguzhanozgokce.testecommerce.domain.Product
+import com.oguzhanozgokce.testecommerce.entitiy.Product
 
 // Code with ♥️
 // _______________________________
@@ -19,6 +19,12 @@ import com.oguzhanozgokce.testecommerce.domain.Product
  */
 @Dao
 interface ProductDao {
-    @Query ("SELECT * FROM Product")
-    suspend fun getAllProducts(): MutableList<Product>
+    @Query ("SELECT * FROM product")
+    suspend fun getAllProducts(): List<Product>
+
+    @Query("UPDATE product SET isFavorite = :isFavorite WHERE ProductID = :productId")
+    suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean)
+
+    @Query("SELECT * FROM product WHERE isFavorite = 1")
+    suspend fun getFavoriteProducts(): List<Product>
 }

@@ -1,7 +1,7 @@
 package com.oguzhanozgokce.testecommerce.data.repo
 
 import com.oguzhanozgokce.testecommerce.data.datasource.ProductDataSource
-import com.oguzhanozgokce.testecommerce.domain.Product
+import com.oguzhanozgokce.testecommerce.entitiy.Product
 
 // Code with ♥️
 // _______________________________
@@ -19,12 +19,11 @@ import com.oguzhanozgokce.testecommerce.domain.Product
  * bu sayede veri tabanı işlemlerini daha kolay yapabileceğiz.
  */
 class ProductRepository (var productDataSource : ProductDataSource){
+    suspend fun getAllProducts() : List<Product> = productDataSource.getAllProducts()
 
-    suspend fun getAllProducts() = productDataSource.getAllProducts()
-    suspend fun productRemove() = productDataSource.productRemove()
+    suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
+        productDataSource.updateFavoriteStatus(productId, isFavorite)
+    }
+    suspend fun getFavoriteProducts() : List<Product> = productDataSource.getFavoriteProducts()
 
-    suspend fun productAdd() : MutableList<Product> = productDataSource.productAdd()
-
-    suspend fun productSearch(productSearch: String) : MutableList<Product> =
-        productDataSource.productSearch(productSearch)
 }

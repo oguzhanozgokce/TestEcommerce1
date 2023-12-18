@@ -69,8 +69,13 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorites_recyclerViewID"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:padding="6dp"
+            android:paddingStart="16dp"
+            android:layout_marginTop="8dp"/>
     </LinearLayout>
 
 

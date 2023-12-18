@@ -1,4 +1,4 @@
-package com.oguzhanozgokce.testecommerce.login
+package com.oguzhanozgokce.testecommerce.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.FragmentLoginBinding
-import com.oguzhanozgokce.testecommerce.login.util.loginPage
+import com.oguzhanozgokce.testecommerce.ui.login.util.loginPage
 
 class LoginFragment : Fragment() {
     private lateinit var binding : FragmentLoginBinding

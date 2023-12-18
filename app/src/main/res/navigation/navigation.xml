@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.oguzhanozgokce.testecommerce.login.LoginFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -56,7 +56,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.oguzhanozgokce.testecommerce.login.SignupFragment"
+        android:name="com.oguzhanozgokce.testecommerce.ui.login.SignupFragment"
         android:label="fragment_signup"
         tools:layout="@layout/fragment_signup" >
         <action

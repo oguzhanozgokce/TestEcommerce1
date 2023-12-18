@@ -1,9 +1,10 @@
 package com.oguzhanozgokce.testecommerce.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
-import com.oguzhanozgokce.testecommerce.domain.Product
+import com.oguzhanozgokce.testecommerce.entitiy.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,28 +24,23 @@ import javax.inject.Inject
  * fun getAllProducts() // veri tabanından tüm ürünleri çekmek için kullanılır.
  */
 @HiltViewModel
-class HomeViewModel  @Inject constructor(var productRepository: ProductRepository) : ViewModel() {
-   
+class HomeViewModel @Inject constructor(var productRepository: ProductRepository) : ViewModel() {
+
     var productList = MutableLiveData<List<Product>>()
 
     init {
-        productAdd()
+        getAllProducts()
     }
-     fun getAllProducts() {
-         CoroutineScope(Dispatchers.Main).launch {
-             productRepository.getAllProducts()
-         }
-     }
-
-    fun productAdd() {
+    fun getAllProducts() {
         CoroutineScope(Dispatchers.Main).launch {
-            productList.value = productRepository.productAdd()
+            val products = productRepository.getAllProducts()
+            Log.e("HomeViewModel", "Fetched products size: ${products.size}") // Log ekle
+            productList.value = products
         }
     }
-
-    fun productSearch(productSearch: String) {
+    fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
         CoroutineScope(Dispatchers.Main).launch {
-            productList.value = productRepository.productSearch(productSearch)
+            productRepository.updateFavoriteStatus(productId, isFavorite)
         }
     }
 
