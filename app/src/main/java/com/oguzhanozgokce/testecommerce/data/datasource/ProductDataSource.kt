@@ -31,4 +31,9 @@ class ProductDataSource (var productDao: ProductDao){
         withContext(Dispatchers.IO) {
             return@withContext productDao.getFavoriteProducts()
         }
+
+    suspend fun getProductById(productId: Int) : Product =
+        withContext(Dispatchers.IO) {
+            return@withContext productDao.getProductById(productId)
+        }
 }

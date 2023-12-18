@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.oguzhanozgokce.testecommerce.databinding.FragmentHomeBinding
 import com.oguzhanozgokce.testecommerce.ui.adapter.ProductAdapter
@@ -23,7 +24,11 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val productAdapter = ProductAdapter(requireContext(), emptyList(), viewModel)
+        val productAdapter = ProductAdapter(requireContext(), emptyList(), viewModel) { productId ->
+            // Tıklama işleyicisi burada tanımlanıyor
+            val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(productId)
+            findNavController().navigate(action)
+        }
         binding.recyclerViewProductID.adapter = productAdapter
         binding.recyclerViewProductID.layoutManager =
             StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)

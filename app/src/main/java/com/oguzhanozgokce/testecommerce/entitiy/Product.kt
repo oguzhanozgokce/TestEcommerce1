@@ -36,7 +36,16 @@ data class Product(
     val image: String,
 
     @ColumnInfo(name = "isFavorite") @NotNull
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+
+    @ColumnInfo(name = "Description") @NotNull
+    val description: String,
+
+    @ColumnInfo(name = "Rating") @NotNull
+    val rating: Int,
+
+    @ColumnInfo(name = "SalesPerson") @NotNull
+    val salesPerson: String,
 
 ): Serializable
 

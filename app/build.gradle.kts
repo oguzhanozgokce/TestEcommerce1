@@ -12,6 +12,7 @@ plugins {
 
 }
 
+
 android {
     namespace = "com.oguzhanozgokce.testecommerce"
     compileSdk = 34

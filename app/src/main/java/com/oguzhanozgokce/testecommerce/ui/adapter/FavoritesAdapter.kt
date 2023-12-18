@@ -25,7 +25,8 @@ import com.oguzhanozgokce.testecommerce.ui.viewmodel.FavoritesViewModel
 class FavoritesAdapter(
     private val context: Context,
     private var productList: List<Product>,
-    private val viewModel: FavoritesViewModel
+    private val viewModel: FavoritesViewModel,
+    private val onProductClicked: (Int) -> Unit
 ) : RecyclerView.Adapter<FavoritesAdapter.DesignViewHolder>() {
     inner class DesignViewHolder(val binding: CardDesingBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -45,6 +46,9 @@ class FavoritesAdapter(
                 .into(favoritesProductImageID)
         }
 
+        holder.binding.favoritesViewID .setOnClickListener {
+            onProductClicked(product.productID) // Tıklama işleyicisini çağır
+        }
         // Kalp ikonunu daima dolu olarak göster
         holder.binding.favoritesFavoriteImageID.setImageResource(R.drawable.baseline_favorite_red_24)
 

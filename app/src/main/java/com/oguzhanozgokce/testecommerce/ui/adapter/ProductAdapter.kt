@@ -22,7 +22,8 @@ import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
 class ProductAdapter(
     val mContex: Context,
     var productList: List<Product>,
-    val viewModel: HomeViewModel
+    val viewModel: HomeViewModel,
+    private val onProductClicked: (Int) -> Unit
 
 ) :
     RecyclerView.Adapter<ProductAdapter.DesingViewHolder>() {
@@ -43,6 +44,7 @@ class ProductAdapter(
             Glide.with(mContex)
                 .load(product.image) // Resmin dosya yolunu yükle
                 .into(holder.binding.favoritesProductImageID) // ImageView'e yükle
+            holder.binding.cardDetailRatingID.text = product.rating.toString()
             holder.binding.favoritesProductTitleID.text = product.title
             holder.binding.favoritesProductPriceID.text = product.price.toString()
 
@@ -62,6 +64,10 @@ class ProductAdapter(
             } else {
                 holder.binding.favoritesFavoriteImageID.setImageResource(R.drawable.baseline_favorite_border_24)
             }
+        }
+
+        holder.binding.favoritesViewID.setOnClickListener {
+            onProductClicked(product.productID)
         }
 
     }

@@ -18,7 +18,11 @@
         android:id="@+id/favoritesFragment"
         android:name="com.oguzhanozgokce.testecommerce.ui.fragment.FavoritesFragment"
         android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.oguzhanozgokce.testecommerce.ui.fragment.CartFragment"
@@ -38,9 +42,8 @@
             android:id="@+id/action_detailFragment_to_homeFragment"
             app:destination="@id/homeFragment"/>
         <argument
-            android:name="product_id"
-            app:argType="integer"
-            android:defaultValue="1" />
+            android:name="productId"
+            app:argType="integer"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

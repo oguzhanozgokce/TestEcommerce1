@@ -26,4 +26,6 @@ class ProductRepository (var productDataSource : ProductDataSource){
     }
     suspend fun getFavoriteProducts() : List<Product> = productDataSource.getFavoriteProducts()
 
+    suspend fun getProductById(productId: Int) : Product = productDataSource.getProductById(productId)
+
 }
