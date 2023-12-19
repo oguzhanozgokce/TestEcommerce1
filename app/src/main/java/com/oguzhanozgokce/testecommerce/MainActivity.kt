@@ -1,5 +1,6 @@
 package com.oguzhanozgokce.testecommerce
 
+import android.content.Context
 import  androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -54,11 +55,25 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        checkIfUserLoggedIn()
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 
+    private fun checkIfUserLoggedIn() {
+        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
+        val isLoggedIn = sharedPreferences.getString("username", null) != null
 
+        if (isLoggedIn) {
+            // Kullanıcı giriş yapmış, home ekranına yönlendir
+            navController.navigate(R.id.homeFragment)
+
+        } else {
+            // Kullanıcı giriş yapmamış, login/signup ekranına yönlendir
+            navController.navigate(R.id.loginFragment)
+        }
+    }
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.oguzhanozgokce.testecommerce.databinding.FragmentCartBinding
+import com.oguzhanozgokce.testecommerce.ui.adapter.ProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,7 +23,4 @@ class CartFragment : Fragment() {
         binding = FragmentCartBinding.inflate(inflater,container,false)
         return binding.root
     }
-
-
-
 }

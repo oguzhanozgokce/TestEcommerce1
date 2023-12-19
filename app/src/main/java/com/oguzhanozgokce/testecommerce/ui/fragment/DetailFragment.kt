@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.oguzhanozgokce.testecommerce.databinding.FragmentDetailBinding
+import com.oguzhanozgokce.testecommerce.ui.viewmodel.CartViewModel
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
@@ -39,6 +40,8 @@ class DetailFragment : Fragment() {
         binding.imageViewBack.setOnClickListener {
             requireActivity().onBackPressed()
         }
+
+
 
         return binding.root
     }

@@ -3,9 +3,12 @@ package com.oguzhanozgokce.testecommerce.hilt
 import android.content.Context
 import androidx.room.Room
 import com.oguzhanozgokce.testecommerce.data.datasource.ProductDataSource
+import com.oguzhanozgokce.testecommerce.data.datasource.UserDataSource
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
+import com.oguzhanozgokce.testecommerce.data.repo.UserRepository
 import com.oguzhanozgokce.testecommerce.data.room.DataBase
 import com.oguzhanozgokce.testecommerce.data.room.ProductDao
+import com.oguzhanozgokce.testecommerce.data.room.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,10 +39,34 @@ class AppModule {
     }
     @Provides
     @Singleton
-    fun providesProductDao(@ApplicationContext context: Context): ProductDao {
-        val db = Room.databaseBuilder(context, DataBase::class.java, "testdb.db")
+    fun providesProductDao(database: DataBase): ProductDao {
+        return database.productDao()
+    }
+    @Provides
+    @Singleton
+    fun providesAppDatabase(@ApplicationContext context: Context): DataBase {
+        return Room.databaseBuilder(context, DataBase::class.java, "testdb.db")
             .createFromAsset("testdb.db").build()
-        return db.productDao()
+    }
+
+    //UserDataSource
+    @Provides
+    @Singleton
+    fun providesUserDataSource(userDao: UserDao): UserDataSource {
+        return UserDataSource(userDao)
 
     }
+    //UserRepository
+    @Provides
+    @Singleton
+    fun providesUserRepository(userDataSource: UserDataSource): UserRepository {
+        return UserRepository(userDataSource)
+    }
+    //UserDao
+    @Provides
+    @Singleton
+    fun providesUserDao(database: DataBase): UserDao {
+        return database.userDao()
+    }
+
 }
