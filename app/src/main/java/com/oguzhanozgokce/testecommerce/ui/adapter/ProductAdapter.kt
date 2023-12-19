@@ -1,7 +1,5 @@
 package com.oguzhanozgokce.testecommerce.ui.adapter
-
 import android.content.Context
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,7 +8,6 @@ import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.CardDesingBinding
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
-
 // Code with ♥️
 // _______________________________
 // |					         |
@@ -25,11 +22,9 @@ class ProductAdapter(
     val viewModel: HomeViewModel,
     private val onProductClicked: (Int) -> Unit
 
-) :
-    RecyclerView.Adapter<ProductAdapter.DesingViewHolder>() {
-    inner class DesingViewHolder(var binding: CardDesingBinding) :  // inner class ile inner class ın dış sınıfın özelliklerine erişmesini sağlar.
-        RecyclerView.ViewHolder(binding.root) {
-    }
+) : RecyclerView.Adapter<ProductAdapter.DesingViewHolder>() {
+    inner class DesingViewHolder(var binding: CardDesingBinding) : RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DesingViewHolder {
         val binding = CardDesingBinding.inflate(LayoutInflater.from(mContex), parent, false)
         return  DesingViewHolder(binding)

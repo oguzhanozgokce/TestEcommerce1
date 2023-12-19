@@ -2,10 +2,13 @@ package com.oguzhanozgokce.testecommerce.hilt
 
 import android.content.Context
 import androidx.room.Room
+import com.oguzhanozgokce.testecommerce.data.datasource.CartDataSource
 import com.oguzhanozgokce.testecommerce.data.datasource.ProductDataSource
 import com.oguzhanozgokce.testecommerce.data.datasource.UserDataSource
+import com.oguzhanozgokce.testecommerce.data.repo.CartRepository
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.data.repo.UserRepository
+import com.oguzhanozgokce.testecommerce.data.room.CartDao
 import com.oguzhanozgokce.testecommerce.data.room.DataBase
 import com.oguzhanozgokce.testecommerce.data.room.ProductDao
 import com.oguzhanozgokce.testecommerce.data.room.UserDao
@@ -68,5 +71,18 @@ class AppModule {
     fun providesUserDao(database: DataBase): UserDao {
         return database.userDao()
     }
+
+    //cart
+    @Provides
+    @Singleton
+    fun providesCartDao(database: DataBase): CartDao = database.cartDao()
+
+    @Provides
+    @Singleton
+    fun providesCartDataSource(cartDao: CartDao): CartDataSource = CartDataSource(cartDao)
+
+    @Provides
+    @Singleton
+    fun providesCartRepository(cartDataSource: CartDataSource): CartRepository = CartRepository(cartDataSource)
 
 }

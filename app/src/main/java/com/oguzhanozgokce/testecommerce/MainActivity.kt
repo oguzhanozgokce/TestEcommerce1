@@ -68,11 +68,9 @@ class MainActivity : AppCompatActivity() {
         val isLoggedIn = sharedPreferences.getString("username", null) != null
 
         if (isLoggedIn) {
-            // Kullanıcı giriş yapmış, home ekranına yönlendir
             navController.navigate(R.id.homeFragment)
 
         } else {
-            // Kullanıcı giriş yapmamış, login/signup ekranına yönlendir
             navController.navigate(R.id.loginFragment)
         }
     }

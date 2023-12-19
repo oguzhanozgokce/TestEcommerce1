@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull
 // |	--------------------				         |
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|
-@Entity(tableName = "cart")
+@Entity(tableName = "Cart")
 data class CartItem(
 
     @PrimaryKey(autoGenerate = true)

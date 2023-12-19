@@ -2,16 +2,12 @@ package com.oguzhanozgokce.testecommerce.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.CardDesingBinding
 import com.oguzhanozgokce.testecommerce.entitiy.Product
-import com.oguzhanozgokce.testecommerce.ui.login.util.snackbar
-import com.oguzhanozgokce.testecommerce.ui.login.util.toast
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.FavoritesViewModel
 
 // Code with ♥️

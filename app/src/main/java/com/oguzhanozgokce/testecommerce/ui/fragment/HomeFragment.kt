@@ -13,6 +13,7 @@ import com.oguzhanozgokce.testecommerce.databinding.FragmentHomeBinding
 import com.oguzhanozgokce.testecommerce.ui.adapter.ProductAdapter
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
@@ -24,11 +25,18 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+        setupProductRecyclerView()
+        setupHighRatedProductRecyclerView()
+
+        return binding.root
+    }
+
+    private fun setupProductRecyclerView() {
         val productAdapter = ProductAdapter(requireContext(), emptyList(), viewModel) { productId ->
-            // Tıklama işleyicisi burada tanımlanıyor
             val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(productId)
             findNavController().navigate(action)
         }
+
         binding.recyclerViewProductID.adapter = productAdapter
         binding.recyclerViewProductID.layoutManager =
             StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
@@ -36,8 +44,22 @@ class HomeFragment : Fragment() {
         viewModel.productList.observe(viewLifecycleOwner) { products ->
             productAdapter.updateData(products)
         }
+    }
 
-        return binding.root
+    private fun setupHighRatedProductRecyclerView() {
+        val highRatedAdapter =
+            ProductAdapter(requireContext(), emptyList(), viewModel) { productId ->
+                val action = HomeFragmentDirections.actionHomeFragmentToDetailFragment(productId)
+                findNavController().navigate(action)
+            }
+
+        binding.recyclerViewProductRatingID.adapter = highRatedAdapter
+        binding.recyclerViewProductRatingID.layoutManager =
+            StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.HORIZONTAL)
+
+        viewModel.highRatedProducts.observe(viewLifecycleOwner) { highRatedProducts ->
+            highRatedAdapter.updateData(highRatedProducts)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

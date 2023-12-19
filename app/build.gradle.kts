@@ -69,6 +69,9 @@ dependencies {
     //viewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    // Transformations.map
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.6.2")
+
     implementation("androidx.activity:activity-ktx:1.8.1")
 
     //room
