@@ -56,8 +56,10 @@
                     android:layout_width="0dp"
                     android:layout_height="290dp"
                     android:layout_margin="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/grey_background"
                     android:backgroundTint="@color/grey"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayoutTitlePrice"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewBack" />
@@ -74,26 +76,25 @@
                     tools:srcCompat="@drawable/pic1" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutID"
-                    android:layout_width="match_parent"
+                    android:id="@+id/linearLayoutTitlePrice"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/detailViewID"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detailViewID"
-                    tools:layout_editor_absoluteX="144dp">
-                        <TextView
-                            android:id="@+id/detailTitleID"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/product_title"
-                            android:textColor="@color/black"
-                            android:textStyle="bold"
-                            android:textSize="20sp" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginTop="16dp">
+                    <TextView
+                        android:id="@+id/detailTitleID"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/product_title"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/detailPriceID"
@@ -107,49 +108,51 @@
                         android:textStyle="bold" />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/linearLayoutID2"
-                    android:layout_width="match_parent"
+                    android:id="@+id/linearLayoutRatingSales"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutTitlePrice"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayoutID"
-                    tools:layout_editor_absoluteX="144dp">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:layout_marginTop="8dp">
 
                     <ImageView
                         android:id="@+id/starBorderID"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
                         android:src="@drawable/baseline_star_border_24" />
                     <TextView
                         android:id="@+id/detailRatingID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="24sp"
-                        android:layout_marginStart="2dp"
-                        android:textColor="@color/black"
+                        android:text="4.5"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:text="@string/rating"/>
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"/>
 
                     <ImageView
                         android:id="@+id/commentID"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/baseline_comment_24" />
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/baseline_comment_24"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp" />
                     <TextView
                         android:id="@+id/detailSalesPersonID"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:textSize="24sp"
-                        android:layout_marginStart="2dp"
-                        android:textColor="@color/black"
+                        android:text="John Doe"
+                        android:textSize="20sp"
                         android:textStyle="bold"
-                        android:text="@string/salesperson"/>
+                        android:textColor="@color/black"
+                        android:layout_marginStart="8dp"
+                        android:layout_gravity="center_vertical"/>
 
                 </LinearLayout>
                 <View
@@ -161,7 +164,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/linearLayoutID2"/>
+                    app:layout_constraintTop_toBottomOf="@id/linearLayoutRatingSales"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -178,7 +181,11 @@
                 Display: 14.2 inch (diagonal) mini-LED backlit display."
                 android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="italic"/>
+                android:textStyle="italic"
+                app:layout_constraintTop_toBottomOf="@id/linearLayoutRatingSales"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"/>
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/detailButtonID"
                 android:layout_width="match_parent"
@@ -188,7 +195,10 @@
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 style="@android:style/Widget.Button"
-                android:background="@drawable/detail_button_background"/>
+                android:background="@drawable/detail_button_background"
+                app:layout_constraintTop_toBottomOf="@id/detailDescriptionID"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
