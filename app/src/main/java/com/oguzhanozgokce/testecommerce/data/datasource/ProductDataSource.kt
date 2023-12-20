@@ -22,6 +22,7 @@ class ProductDataSource (var productDao: ProductDao){
         withContext(Dispatchers.IO) {
             return@withContext productDao.getAllProducts()
         }
+    fun getProductsByCategory(categoryId: Int) = productDao.getProductsByCategory(categoryId)
 
     suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
         productDao.updateFavoriteStatus(productId, isFavorite)

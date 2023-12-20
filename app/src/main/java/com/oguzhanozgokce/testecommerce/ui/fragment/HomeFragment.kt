@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         setupProductRecyclerView()
         setupHighRatedProductRecyclerView()
+        setupCategoryListeners()
 
         return binding.root
     }
@@ -44,6 +45,14 @@ class HomeFragment : Fragment() {
         viewModel.productList.observe(viewLifecycleOwner) { products ->
             productAdapter.updateData(products)
         }
+    }
+
+    private fun setupCategoryListeners() {
+        binding.imageViewDesktopID.setOnClickListener { viewModel.filterProductsByCategory(1) }
+        binding.imageViewlaptopimageID.setOnClickListener { viewModel.filterProductsByCategory(2) }
+        binding.imageViewPhoneID.setOnClickListener { viewModel.filterProductsByCategory(3) }
+        binding.imageViewHeadphonesID.setOnClickListener { viewModel.filterProductsByCategory(4) }
+        binding.imageViewAccessoryID.setOnClickListener { viewModel.filterProductsByCategory(-1) } // Tüm ürünleri getir
     }
 
     private fun setupHighRatedProductRecyclerView() {

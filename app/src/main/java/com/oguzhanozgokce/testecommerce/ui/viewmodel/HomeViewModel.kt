@@ -10,6 +10,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.oguzhanozgokce.testecommerce.data.repo.CategoryRepository
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,7 +21,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(var productRepository: ProductRepository) : ViewModel() {
+class HomeViewModel @Inject constructor(
+    var productRepository: ProductRepository,
+    var categoryRepository: CategoryRepository
+    ) : ViewModel() {
 
     private val _productList = MutableLiveData<List<Product>>()
     val productList: LiveData<List<Product>> = _productList
@@ -32,7 +37,7 @@ class HomeViewModel @Inject constructor(var productRepository: ProductRepository
     }
 
     fun getAllProducts() {
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             val products = productRepository.getAllProducts()
             Log.e("HomeViewModel", "Fetched products size: ${products.size}") // Log ekle
             _productList.value = products
@@ -41,8 +46,15 @@ class HomeViewModel @Inject constructor(var productRepository: ProductRepository
         }
     }
 
+    fun filterProductsByCategory(categoryId: Int) {
+        val filteredProductsLiveData = productRepository.getProductsByCategory(categoryId)
+        filteredProductsLiveData.observeForever { products ->
+            _productList.postValue(products)
+        }
+    }
+
     fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
-        CoroutineScope(Dispatchers.Main).launch {
+        viewModelScope.launch {
             productRepository.updateFavoriteStatus(productId, isFavorite)
         }
     }

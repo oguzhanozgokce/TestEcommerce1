@@ -20,9 +20,14 @@ import java.io.Serializable
 // Parcelable: Bir sınıfın nesnesini başka bir sınıfa göndermek için kullanılır. Serializable'ın daha hızlı çalışan versiyonudur.
 
 
-@Entity(tableName = "product")
+@Entity(tableName = "product",
+    foreignKeys = [ForeignKey(entity = Category::class,
+        parentColumns = ["CategoryID"],
+        childColumns = ["CategoryID"],
+        onDelete = ForeignKey.CASCADE)]
+)
 data class Product(
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey
     @ColumnInfo(name = "ProductID") @NotNull
     val productID: Int = 0,
 
@@ -41,11 +46,14 @@ data class Product(
     @ColumnInfo(name = "Description") @NotNull
     val description: String,
 
+    @ColumnInfo(name = "SalesPerson") @NotNull
+    val salesPerson: String,
+
     @ColumnInfo(name = "Rating") @NotNull
     val rating: Int,
 
-    @ColumnInfo(name = "SalesPerson") @NotNull
-    val salesPerson: String,
+    @ColumnInfo(name = "CategoryID") @NotNull
+    val categoryID: Int,
 
 ): Serializable
 

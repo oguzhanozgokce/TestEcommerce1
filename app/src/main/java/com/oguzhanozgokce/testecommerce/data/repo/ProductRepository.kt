@@ -1,5 +1,6 @@
 package com.oguzhanozgokce.testecommerce.data.repo
 
+import androidx.lifecycle.LiveData
 import com.oguzhanozgokce.testecommerce.data.datasource.ProductDataSource
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 
@@ -20,6 +21,9 @@ import com.oguzhanozgokce.testecommerce.entitiy.Product
  */
 class ProductRepository (var productDataSource : ProductDataSource){
     suspend fun getAllProducts() : List<Product> = productDataSource.getAllProducts()
+    fun getProductsByCategory(categoryId: Int): LiveData<List<Product>> {
+        return productDataSource.getProductsByCategory(categoryId)
+    }
 
     suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
         productDataSource.updateFavoriteStatus(productId, isFavorite)

@@ -1,5 +1,6 @@
 package com.oguzhanozgokce.testecommerce.data.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.oguzhanozgokce.testecommerce.entitiy.Product
@@ -21,6 +22,9 @@ import com.oguzhanozgokce.testecommerce.entitiy.Product
 interface ProductDao {
     @Query ("SELECT * FROM product")
     suspend fun getAllProducts(): List<Product>
+
+    @Query("SELECT * FROM product WHERE categoryID = :categoryId")
+    fun getProductsByCategory(categoryId: Int): LiveData<List<Product>>
 
     @Query("UPDATE product SET isFavorite = :isFavorite WHERE ProductID = :productId")
     suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean)
