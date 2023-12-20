@@ -5,24 +5,17 @@ import com.oguzhanozgokce.testecommerce.entitiy.Product
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
-/**
- * Veri tabanı işlemleri için gerekli olan fonksiyonlar burada tanımlanır.
- * buradaki fonksiyonlar ProductDao interfaceinden gelir.
- */
+
 class ProductDataSource (var productDao: ProductDao){
 
     suspend fun getAllProducts() : List<Product> =
         withContext(Dispatchers.IO) {
             return@withContext productDao.getAllProducts()
         }
-    fun getProductsByCategory(categoryId: Int) = productDao.getProductsByCategory(categoryId)
+    suspend fun getProductsByCategory(categoryId: Int): List<Product> =
+        withContext(Dispatchers.IO) {
+            productDao.getProductsByCategory(categoryId)
+        }
 
     suspend fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
         productDao.updateFavoriteStatus(productId, isFavorite)

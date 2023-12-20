@@ -5,13 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import org.jetbrains.annotations.NotNull
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------	 |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 @Entity(tableName = "User")
 data class User (
     @PrimaryKey

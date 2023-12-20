@@ -6,20 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanozgokce.testecommerce.data.repo.UserRepository
 import com.oguzhanozgokce.testecommerce.ui.login.RegistrationStatus
+import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------     |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 
 @HiltViewModel
-class AuthViewModel @Inject constructor (private val userRepository: UserRepository) : ViewModel() {
+class AuthViewModel @Inject constructor (
+    private val userRepository: UserRepository,
+    private val userSessionManager: UserSessionManager
+    ) : ViewModel() {
 
     private val _registrationStatus = MutableLiveData<RegistrationStatus>()
     val registrationStatus: LiveData<RegistrationStatus> = _registrationStatus
@@ -31,14 +28,20 @@ class AuthViewModel @Inject constructor (private val userRepository: UserReposit
     fun registerUser(username: String, password: String) {
         viewModelScope.launch {
             userRepository.registerUser(username, password)
+            userSessionManager.saveUserLogin(username) // Başarılı kayıt durumunu kaydet
             _registrationStatus.value = RegistrationStatus.SUCCESS
         }
     }
+
     // Kullanıcı girişi için fonksiyon
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
             val isLoginSuccessful = userRepository.loginUser(username, password)
+            if (isLoginSuccessful) {
+                userSessionManager.saveUserLogin(username) // Başarılı giriş durumunu kaydet
+            }
             _loginStatus.value = isLoginSuccessful
         }
     }
+
 }

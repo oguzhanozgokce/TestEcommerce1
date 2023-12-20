@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.oguzhanozgokce.testecommerce.databinding.FragmentFavoritesBinding
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 import com.oguzhanozgokce.testecommerce.ui.adapter.FavoritesAdapter
-import com.oguzhanozgokce.testecommerce.ui.adapter.ProductAdapter
 import com.oguzhanozgokce.testecommerce.ui.login.util.snackbar
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.FavoritesViewModel
 import dagger.hilt.android.AndroidEntryPoint

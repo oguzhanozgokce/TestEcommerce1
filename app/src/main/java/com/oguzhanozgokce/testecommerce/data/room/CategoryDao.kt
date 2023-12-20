@@ -5,13 +5,6 @@ import androidx.room.Dao
 import androidx.room.Query
 import com.oguzhanozgokce.testecommerce.entitiy.Category
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 @Dao
 interface CategoryDao {
     @Query("SELECT * FROM categories")

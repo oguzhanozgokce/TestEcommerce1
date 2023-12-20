@@ -9,12 +9,8 @@ import com.oguzhanozgokce.testecommerce.databinding.OrderCartDesingBinding
 import com.oguzhanozgokce.testecommerce.entitiy.CartItem
 
 // Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------	 |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
+// Created by Oguzhan OZGOKCE
+
 class CartAdapter(
     private var cartItems: List<CartItem>,
     private val onDeleteClick: (CartItem) -> Unit

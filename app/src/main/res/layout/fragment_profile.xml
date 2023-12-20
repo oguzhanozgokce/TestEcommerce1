@@ -87,16 +87,17 @@
                     android:background="@drawable/white_background3"/>
 
                 <Button
+                    android:id="@+id/profile_logout_buttonID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/logout"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginStart="32dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginEnd="32dp"
-                    android:background="@drawable/white_background3"/>
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/white_background3"
+                    android:text="@string/logout"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </LinearLayout>

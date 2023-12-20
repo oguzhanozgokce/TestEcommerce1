@@ -11,13 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(var productRepository: ProductRepository) : ViewModel(){
 

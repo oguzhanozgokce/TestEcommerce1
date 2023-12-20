@@ -11,12 +11,8 @@ import com.oguzhanozgokce.testecommerce.entitiy.Product
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.FavoritesViewModel
 
 // Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------	 |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
+// Created by Oguzhan OZGOKCE
+
 
 class FavoritesAdapter(
     private val context: Context,

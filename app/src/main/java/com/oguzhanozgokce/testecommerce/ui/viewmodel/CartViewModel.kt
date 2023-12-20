@@ -5,20 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanozgokce.testecommerce.data.repo.CartRepository
-import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.entitiy.CartItem
-import com.oguzhanozgokce.testecommerce.entitiy.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
+
 @HiltViewModel
 class CartViewModel @Inject constructor(private val cartRepository: CartRepository) : ViewModel() {
 

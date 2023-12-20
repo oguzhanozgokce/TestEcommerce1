@@ -1,6 +1,5 @@
 package com.oguzhanozgokce.testecommerce
 
-import android.content.Context
 import  androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -8,7 +7,9 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.oguzhanozgokce.testecommerce.databinding.ActivityMainBinding
+import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -16,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    @Inject
+    lateinit var userSessionManager: UserSessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,13 +67,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkIfUserLoggedIn() {
-        val sharedPreferences = getSharedPreferences("MyAppPrefs", Context.MODE_PRIVATE)
-        val isLoggedIn = sharedPreferences.getString("username", null) != null
-
-        if (isLoggedIn) {
+        if (userSessionManager.isUserLoggedIn()) {
+            // Kullanıcı giriş yapmış, ana ekrana yönlendir
             navController.navigate(R.id.homeFragment)
-
         } else {
+            // Kullanıcı giriş yapmamış, giriş ekranına yönlendir
             navController.navigate(R.id.loginFragment)
         }
     }

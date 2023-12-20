@@ -8,13 +8,10 @@ import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.databinding.CardDesingBinding
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 import com.oguzhanozgokce.testecommerce.ui.viewmodel.HomeViewModel
+
 // Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------     |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
+// Created by Oguzhan OZGOKCE |
+
 
 class ProductAdapter(
     val mContex: Context,

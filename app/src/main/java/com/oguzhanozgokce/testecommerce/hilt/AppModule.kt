@@ -15,6 +15,7 @@ import com.oguzhanozgokce.testecommerce.data.room.CategoryDao
 import com.oguzhanozgokce.testecommerce.data.room.DataBase
 import com.oguzhanozgokce.testecommerce.data.room.ProductDao
 import com.oguzhanozgokce.testecommerce.data.room.UserDao
+import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,16 +23,15 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------	 |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
+
+    @Provides
+    @Singleton
+    fun provideUserSessionManager(@ApplicationContext context: Context): UserSessionManager {
+        return UserSessionManager(context)
+    }
     @Provides
     @Singleton
     fun providesProductDataSource(productDao: ProductDao): ProductDataSource {

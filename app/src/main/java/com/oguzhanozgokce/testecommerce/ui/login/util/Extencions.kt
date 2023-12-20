@@ -3,15 +3,6 @@ package com.oguzhanozgokce.testecommerce.ui.login.util
 import android.view.View
 import androidx.navigation.Navigation
 import com.google.android.material.snackbar.Snackbar
-import com.oguzhanozgokce.testecommerce.R
-
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------				         |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 
 
 fun Navigation.loginPage(it : View, id : Int) {

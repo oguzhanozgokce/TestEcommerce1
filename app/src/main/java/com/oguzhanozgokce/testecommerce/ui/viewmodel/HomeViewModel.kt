@@ -1,11 +1,5 @@
 package com.oguzhanozgokce.testecommerce.ui.viewmodel
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------	 |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,8 +9,6 @@ import com.oguzhanozgokce.testecommerce.data.repo.CategoryRepository
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.entitiy.Product
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -47,11 +39,17 @@ class HomeViewModel @Inject constructor(
     }
 
     fun filterProductsByCategory(categoryId: Int) {
-        val filteredProductsLiveData = productRepository.getProductsByCategory(categoryId)
-        filteredProductsLiveData.observeForever { products ->
-            _productList.postValue(products)
+        viewModelScope.launch {
+            val filteredProducts = if (categoryId == -1) {
+                productRepository.getAllProducts()
+            } else {
+                productRepository.getProductsByCategory(categoryId)
+            }
+            _productList.postValue(filteredProducts)
         }
     }
+
+
 
     fun updateFavoriteStatus(productId: Int, isFavorite: Boolean) {
         viewModelScope.launch {

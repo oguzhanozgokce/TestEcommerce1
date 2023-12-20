@@ -10,13 +10,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-// Code with ♥️
-// _______________________________
-// |					         |
-// |  Created by Oguzhan OZGOKCE |
-// |	--------------------     |
-// |  oguzhanozgokce34@Android.  |
-// |_____________________________|
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val productRepository: ProductRepository
