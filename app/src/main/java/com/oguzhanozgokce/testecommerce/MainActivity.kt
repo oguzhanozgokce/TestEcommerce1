@@ -74,7 +74,13 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         val isLoggedIn = userSessionManager.isUserLoggedIn()
         binding.bottomNavigation.visibility = if (isLoggedIn) View.VISIBLE else View.GONE
+        updateBottomNavigationVisibility()
     }
+    fun updateBottomNavigationVisibility() {
+        val isLoggedIn = userSessionManager.isUserLoggedIn()
+        binding.bottomNavigation.visibility = if (isLoggedIn) View.VISIBLE else View.GONE
+    }
+
 
 
 }

@@ -23,6 +23,12 @@ class UserRepository(var userDataSource: UserDataSource) {
     suspend fun getUserById(userId: Long): User? {
         return userDataSource.getUserById(userId)  // Implement getUserById in UserDataSource
     }
+    suspend fun updateUserInfo(userId: Long, email: String, phone: String, age: Int, address: String): Boolean {
+        return userDataSource.updateUserInfo(userId, email, phone, age, address)
+    }
+    suspend fun updateUser(user: User): Boolean {
+        return userDataSource.updateUser(user)
+    }
 
 
 }

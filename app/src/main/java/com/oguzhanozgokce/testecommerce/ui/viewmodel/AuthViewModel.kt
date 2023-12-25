@@ -1,13 +1,17 @@
 package com.oguzhanozgokce.testecommerce.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.Navigation
+import com.oguzhanozgokce.testecommerce.R
 import com.oguzhanozgokce.testecommerce.data.repo.UserRepository
 import com.oguzhanozgokce.testecommerce.entitiy.User
 import com.oguzhanozgokce.testecommerce.ui.login.RegistrationStatus
 import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
+import com.oguzhanozgokce.testecommerce.ui.login.util.loginPage
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +22,11 @@ class AuthViewModel @Inject constructor (
     private val userRepository: UserRepository,
     private val userSessionManager: UserSessionManager
     ) : ViewModel() {
+    private val _navigateToHome = MutableLiveData<Boolean?>()
+    val navigateToHome: LiveData<Boolean?> = _navigateToHome
+
+// Inside updateUserInfo
+
 
     private val _registrationStatus = MutableLiveData<RegistrationStatus>()
     val registrationStatus: LiveData<RegistrationStatus> = _registrationStatus
@@ -55,5 +64,31 @@ class AuthViewModel @Inject constructor (
             }
         }
     }
+    fun updateUserInfo(email: String, phone: String, age: Int, address: String) {
+        val userId = userSessionManager.getCurrentUserId()
+        if (userId != -1) { // assuming -1 indicates no user
+            viewModelScope.launch {
+                val user = userRepository.getUserById(userId.toLong())
+                user?.let {
+                    val updatedUser = it.copy(email = email, phoneNumber = phone, age = age, address = address)
+                    val updateResult = userRepository.updateUser(updatedUser)
+                    // Ensure updateUser returns a Boolean indicating success or failure
+                    _navigateToHome.value = updateResult
+                } ?: run {
+                    Log.e("AuthViewModel", "User not found with ID: $userId")
+                    _navigateToHome.value = false // User not found
+                }
+            }
+        } else {
+            Log.e("AuthViewModel", "Invalid UserID: $userId")
+            _navigateToHome.value = false // Invalid user ID
+        }
+    }
+    fun doneNavigating() {
+        _navigateToHome.value = null
+    }
+
+
+
 
 }

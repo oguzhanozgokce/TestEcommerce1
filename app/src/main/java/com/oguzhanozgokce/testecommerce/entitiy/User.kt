@@ -24,4 +24,16 @@ data class User (
 
     @ColumnInfo(name = "surname")
     val surname: String?,
+
+    @ColumnInfo(name = "email")
+    val email: String? = null,
+
+    @ColumnInfo(name = "phoneNumber")
+    val phoneNumber: String? = null,
+
+    @ColumnInfo(name = "age")
+    val age: Int? = null,
+
+    @ColumnInfo(name = "address")
+    val address: String? = null
 )

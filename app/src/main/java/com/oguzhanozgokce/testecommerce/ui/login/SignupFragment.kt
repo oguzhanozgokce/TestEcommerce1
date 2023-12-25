@@ -53,7 +53,7 @@ class SignupFragment : Fragment() {
                     // Continue with navigation
                     val currentDestination = findNavController().currentDestination?.id
                     if (currentDestination == R.id.signupFragment) {
-                        findNavController().navigate(R.id.action_signupFragment_to_homeFragment)
+                        findNavController().navigate(R.id.action_signupFragment_to_userInformationFragment)
                     }
                 }
                 FAILURE -> {

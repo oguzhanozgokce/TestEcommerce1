@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.oguzhanozgokce.testecommerce.entitiy.User
 
 @Dao
@@ -19,6 +20,10 @@ interface UserDao {
 
     @Query("SELECT * FROM User WHERE userId = :userId")
     suspend fun getUserById(userId: Long): User?
+
+    @Update
+    suspend fun updateUser(user: User)
+
 
 
 }

@@ -43,5 +43,27 @@ class UserDataSource (private val userDao: UserDao) {
     suspend fun getUserById(userId: Long): User? {
         return userDao.getUserById(userId)  // Ensure this method is implemented in UserDao
     }
+    suspend fun updateUserInfo(userId: Long, email: String, phone: String, age: Int, address: String): Boolean {
+        return try {
+            val user = userDao.getUserById(userId)
+            user?.let {
+                val updatedUser = it.copy(email = email, phoneNumber = phone, age = age, address = address)
+                userDao.updateUser(updatedUser)
+                true
+            } ?: false
+        } catch (e: Exception) {
+            Log.e("UserRepository", "Error updating user info: ${e.localizedMessage}")
+            false
+        }
+    }
+    suspend fun updateUser(user: User): Boolean {
+        return try {
+            userDao.updateUser(user)
+            true // return true on success
+        } catch (e: Exception) {
+            Log.e("UserRepository", "Error updating user: ${e.localizedMessage}")
+            false // return false on failure
+        }
+    }
 
 }
