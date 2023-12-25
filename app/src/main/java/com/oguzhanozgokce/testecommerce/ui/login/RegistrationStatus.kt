@@ -7,4 +7,8 @@ package com.oguzhanozgokce.testecommerce.ui.login
 // |	--------------------				         |
 // |  oguzhanozgokce34@Android.  |
 // |_____________________________|
-enum class RegistrationStatus { SUCCESS, FAILURE }
+enum class RegistrationStatus {
+    SUCCESS,
+    FAILURE,
+    IN_PROGRESS
+}

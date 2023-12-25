@@ -4,15 +4,18 @@ import android.content.Context
 import androidx.room.Room
 import com.oguzhanozgokce.testecommerce.data.datasource.CartDataSource
 import com.oguzhanozgokce.testecommerce.data.datasource.CategoryDataSource
+import com.oguzhanozgokce.testecommerce.data.datasource.OrderDatSources
 import com.oguzhanozgokce.testecommerce.data.datasource.ProductDataSource
 import com.oguzhanozgokce.testecommerce.data.datasource.UserDataSource
 import com.oguzhanozgokce.testecommerce.data.repo.CartRepository
 import com.oguzhanozgokce.testecommerce.data.repo.CategoryRepository
+import com.oguzhanozgokce.testecommerce.data.repo.OrderRepository
 import com.oguzhanozgokce.testecommerce.data.repo.ProductRepository
 import com.oguzhanozgokce.testecommerce.data.repo.UserRepository
 import com.oguzhanozgokce.testecommerce.data.room.CartDao
 import com.oguzhanozgokce.testecommerce.data.room.CategoryDao
 import com.oguzhanozgokce.testecommerce.data.room.DataBase
+import com.oguzhanozgokce.testecommerce.data.room.OrderDao
 import com.oguzhanozgokce.testecommerce.data.room.ProductDao
 import com.oguzhanozgokce.testecommerce.data.room.UserDao
 import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
@@ -109,6 +112,19 @@ class AppModule {
     @Singleton
     fun providesCategoryRepository(categoryDataSource: CategoryDataSource): CategoryRepository =
         CategoryRepository(categoryDataSource)
+
+    //order
+    @Provides
+    @Singleton
+    fun providesOrderDao(database: DataBase) = database.orderDao()
+
+    @Provides
+    @Singleton
+    fun providesOrderDataSource(orderDao: OrderDao): OrderDatSources = OrderDatSources(orderDao)
+
+    @Provides
+    @Singleton
+    fun providesOrderRepository(orderDatSources: OrderDatSources): OrderRepository = OrderRepository(orderDatSources)
 
 
 }

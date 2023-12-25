@@ -21,4 +21,8 @@ class ProductRepository (var productDataSource : ProductDataSource){
 
     suspend fun getProductById(productId: Int) : Product = productDataSource.getProductById(productId)
 
+    suspend fun searchProductsByName(query: String): List<Product> {
+        return productDataSource.searchProductsByName(query)
+    }
+
 }

@@ -24,4 +24,8 @@ interface ProductDao {
 
     @Query("SELECT * FROM product WHERE ProductID = :productId")
     suspend fun getProductById(productId: Int): Product
+
+    //search
+    @Query("SELECT * FROM product WHERE title LIKE :query")
+    suspend fun searchProductsByName(query: String): List<Product>
 }

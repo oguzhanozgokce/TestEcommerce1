@@ -30,4 +30,10 @@ class ProductDataSource (var productDao: ProductDao){
         withContext(Dispatchers.IO) {
             return@withContext productDao.getProductById(productId)
         }
+
+    //search
+    suspend fun searchProductsByName(query: String): List<Product> {
+            return productDao.searchProductsByName("%$query%")
+        }
+
 }

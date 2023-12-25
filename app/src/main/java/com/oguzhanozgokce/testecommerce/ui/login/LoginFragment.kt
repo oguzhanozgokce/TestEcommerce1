@@ -27,9 +27,14 @@ class LoginFragment : Fragment() {
         binding = FragmentLoginBinding.inflate(inflater,container,false)
         //When the button is pressed, it switches to the home fragment.
         binding.loginButtonID.setOnClickListener {
-            val username = binding.loginUsernameID.text.toString()
-            val password = binding.loginPasswordID.text.toString()
-            authViewModel.loginUser(username, password)
+            val username = binding.loginUsernameID.text.toString().trim()
+            val password = binding.loginPasswordID.text.toString().trim()
+
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                authViewModel.loginUser(username, password)
+            } else {
+                Toast.makeText(requireContext(), "Please enter username and password", Toast.LENGTH_SHORT).show()
+            }
         }
         observeViewModel()
         binding.loginSignupTextID.setOnClickListener {
@@ -43,8 +48,9 @@ class LoginFragment : Fragment() {
             if (isSuccess) {
                 findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Login failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Incorrect login credentials", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
 }

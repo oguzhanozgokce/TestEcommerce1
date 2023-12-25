@@ -27,6 +27,7 @@ class ProfileFragment : Fragment() {
         binding.profileLogoutButtonID.setOnClickListener {
             logoutUser()
         }
+        displayUserName()
         return binding.root
     }
 
@@ -37,6 +38,15 @@ class ProfileFragment : Fragment() {
         // Giriş sayfasına yönlendir
         Navigation.loginPage(requireView(), R.id.action_profileFragment_to_loginFragment)
 
+    }
+
+    private fun displayUserName() {
+        val name = userSessionManager.getUserName()  // Retrieve the user's name
+        val surname = userSessionManager.getUserSurname()  // Retrieve the user's surname
+
+        // Update the TextView with the user's name and surname
+        // Make sure you have a TextView in your layout with the ID 'userNameTextView'
+        binding.profileCustomerNameID.text = "$name $surname"
     }
 
 

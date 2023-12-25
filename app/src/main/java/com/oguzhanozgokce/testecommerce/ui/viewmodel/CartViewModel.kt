@@ -6,13 +6,17 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.oguzhanozgokce.testecommerce.data.repo.CartRepository
 import com.oguzhanozgokce.testecommerce.entitiy.CartItem
+import com.oguzhanozgokce.testecommerce.ui.login.util.UserSessionManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 
 @HiltViewModel
-class CartViewModel @Inject constructor(private val cartRepository: CartRepository) : ViewModel() {
+class CartViewModel @Inject constructor(
+    private val cartRepository: CartRepository,
+    private val userSessionManager: UserSessionManager
+) : ViewModel() {
 
     val cartItems: LiveData<List<CartItem>> = cartRepository.getAllCartItems()
 
@@ -24,6 +28,7 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
         viewModelScope.launch {
             val cartItem = CartItem(productId, title, price, image)
             cartRepository.insertCartItem(cartItem)
+            userSessionManager.saveSelectedProductId(productId)  // Save the product ID
             _addItemStatus.value = true
         }
     }
@@ -36,4 +41,5 @@ class CartViewModel @Inject constructor(private val cartRepository: CartReposito
     fun resetAddItemStatus() {
         _addItemStatus.value = false
     }
+
 }

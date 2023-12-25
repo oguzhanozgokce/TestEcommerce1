@@ -57,4 +57,11 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun searchProductsByName(query: String) {
+        viewModelScope.launch {
+            val searchResult = productRepository.searchProductsByName(query)
+            _productList.postValue(searchResult)
+        }
+    }
+
 }
