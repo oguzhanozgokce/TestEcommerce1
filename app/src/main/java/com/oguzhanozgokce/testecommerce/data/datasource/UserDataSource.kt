@@ -58,6 +58,7 @@ class UserDataSource (private val userDao: UserDao) {
     }
     suspend fun updateUser(user: User): Boolean {
         return try {
+            Log.e("UpdateUserRepo", "Updating user: $user")
             userDao.updateUser(user)
             true // return true on success
         } catch (e: Exception) {

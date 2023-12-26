@@ -23,10 +23,14 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding  = FragmentProfileBinding.inflate(inflater,container,false)
         userSessionManager = UserSessionManager(requireContext())
+        binding.profileInformationID.setOnClickListener {
+            Navigation.loginPage(it, R.id.action_profileFragment_to_getUserInformationFragment2)
+        }
 
         binding.profileLogoutButtonID.setOnClickListener {
             logoutUser()
         }
+
         displayUserName()
         return binding.root
     }

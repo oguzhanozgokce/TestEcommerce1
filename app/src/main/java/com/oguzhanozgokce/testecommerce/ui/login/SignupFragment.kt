@@ -68,7 +68,4 @@ class SignupFragment : Fragment() {
             }
         }
     }
-
-
-
 }

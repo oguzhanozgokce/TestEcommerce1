@@ -25,14 +25,20 @@ class AuthViewModel @Inject constructor (
     private val _navigateToHome = MutableLiveData<Boolean?>()
     val navigateToHome: LiveData<Boolean?> = _navigateToHome
 
-// Inside updateUserInfo
-
-
     private val _registrationStatus = MutableLiveData<RegistrationStatus>()
     val registrationStatus: LiveData<RegistrationStatus> = _registrationStatus
 
     private val _loginStatus = MutableLiveData<Boolean>()
     val loginStatus: LiveData<Boolean> = _loginStatus
+
+    private val _user = MutableLiveData<User?>()
+    val user: LiveData<User?> = _user
+
+    fun loadUserInfo(userId: Int) {
+        viewModelScope.launch {
+            _user.value = userRepository.getUserById(userId.toLong())
+        }
+    }
 
     // Kullanıcı kaydı için fonksiyon
     fun registerUser(name: String, surname: String, username: String, password: String) {
@@ -51,7 +57,6 @@ class AuthViewModel @Inject constructor (
         }
     }
 
-
     // Kullanıcı girişi için fonksiyon
     fun loginUser(username: String, password: String) {
         viewModelScope.launch {
@@ -66,14 +71,35 @@ class AuthViewModel @Inject constructor (
     }
     fun updateUserInfo(email: String, phone: String, age: Int, address: String) {
         val userId = userSessionManager.getCurrentUserId()
-        if (userId != -1) { // assuming -1 indicates no user
+        if (userId != -1) {
             viewModelScope.launch {
-                val user = userRepository.getUserById(userId.toLong())
-                user?.let {
-                    val updatedUser = it.copy(email = email, phoneNumber = phone, age = age, address = address)
+                val updateResult = userRepository.updateUserInfo(userId.toLong(), email, phone, age, address)
+                _navigateToHome.value = updateResult // true if successful, false otherwise
+            }
+        } else {
+            Log.e("AuthViewModel", "Invalid UserID: $userId")
+            _navigateToHome.value = false // Invalid user ID
+        }
+    }
+    fun updateUserDetails(newName: String, newUsername: String, newPassword: String, newEmail: String, newPhone: String, newAge: Int, newAddress: String) {
+        Log.e("UpdateUser", "Name: $newName, Username: $newUsername, Password: $newPassword, Email: $newEmail, Phone: $newPhone, Age: $newAge, Address: $newAddress")
+        val userId = userSessionManager.getCurrentUserId()
+        if (userId != -1) {
+            viewModelScope.launch {
+                val currentUser = userRepository.getUserById(userId.toLong())
+                currentUser?.let {
+                    // Create an updated user object with the new information
+                    val updatedUser = it.copy(
+                        name = newName,
+                        username = newUsername,
+                        password = newPassword,
+                        email = newEmail,
+                        phoneNumber = newPhone,
+                        age = newAge,
+                        address = newAddress
+                    )
                     val updateResult = userRepository.updateUser(updatedUser)
-                    // Ensure updateUser returns a Boolean indicating success or failure
-                    _navigateToHome.value = updateResult
+                    _navigateToHome.value = updateResult // true if successful, false otherwise
                 } ?: run {
                     Log.e("AuthViewModel", "User not found with ID: $userId")
                     _navigateToHome.value = false // User not found
@@ -87,8 +113,5 @@ class AuthViewModel @Inject constructor (
     fun doneNavigating() {
         _navigateToHome.value = null
     }
-
-
-
 
 }
